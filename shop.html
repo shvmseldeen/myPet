@@ -1,0 +1,17 @@
+<main>
+    <section class="pt-28 pb-20 lg:pb-28 bg-ivory-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 reveal-section">
+                <span class="text-gold-400 text-xs font-semibold uppercase tracking-widest">Pet Shop</span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-navy-500 mt-3">Shop for Your Pet</h2>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3 mb-10 reveal-section">
+                <button onclick="filterShop('all')" class="tab-btn active px-5 py-2 rounded-full text-xs font-semibold uppercase border">All</button>
+                <button onclick="filterShop('food')" class="tab-btn px-5 py-2 rounded-full text-xs font-semibold uppercase border">Food</button>
+                <button onclick="filterShop('toys')" class="tab-btn px-5 py-2 rounded-full text-xs font-semibold uppercase border">Toys</button>
+                <button onclick="filterShop('accessories')" class="tab-btn px-5 py-2 rounded-full text-xs font-semibold uppercase border">Accessories</button>
+            </div>
+            <div id="shop-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-section"></div>
+        </div>
+    </section>
+</main>

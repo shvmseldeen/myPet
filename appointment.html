@@ -1,0 +1,33 @@
+<main>
+    <section class="pt-28 pb-20 lg:pb-28 bg-ivory-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 reveal-section">
+                <span class="text-gold-400 text-xs font-semibold uppercase tracking-widest">Schedule</span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-navy-500 mt-3">Book an Appointment</h2>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-10 reveal-section">
+                <div class="bg-ivory-50 rounded-2xl p-6 border border-ivory-300">
+                    <div class="flex items-center justify-between mb-6">
+                        <button onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i></button>
+                        <h3 id="calendar-month" class="text-lg font-bold text-navy-500"></h3>
+                        <button onclick="changeMonth(1)"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div id="calendar-days" class="grid grid-cols-7 gap-1"></div>
+                    <div id="time-slots" class="grid grid-cols-3 gap-2 mt-6"></div>
+                </div>
+                
+                <div class="bg-ivory-50 rounded-2xl p-6 border border-ivory-300">
+                    <select id="apt-service" class="w-full px-4 py-3 mb-4 rounded-xl border">
+                        <option value="">Choose a service</option>
+                        <option value="Veterinary Care - $50">Veterinary Care — $50</option>
+                        <option value="Grooming - $30">Grooming — $30</option>
+                    </select>
+                    <select id="apt-pet" class="w-full px-4 py-3 mb-4 rounded-xl border"></select>
+                    <input type="text" id="apt-date" readonly placeholder="Date" class="w-full px-4 py-3 mb-4 rounded-xl border">
+                    <input type="text" id="apt-time" readonly placeholder="Time" class="w-full px-4 py-3 mb-4 rounded-xl border">
+                    <button onclick="bookAppointment()" class="w-full btn-gold py-4 rounded-xl">Confirm Booking</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

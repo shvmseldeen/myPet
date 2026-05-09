@@ -1,5 +1,4 @@
 // ========== STATE & LOCAL STORAGE ==========
-// Load cart and auth state from localStorage so it persists across pages
 let cart = JSON.parse(localStorage.getItem('mypet_cart')) || [];
 let isLoggedIn = localStorage.getItem('token') !== null;
 
@@ -33,16 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
     initGSAPAnimations();
 
-    // Auto-detect page and render appropriate content
-    const path = window.location.pathname;
-    
-    if (path.includes('shop.html')) {
-        renderShop('all');
-    }
-    if (path.includes('mypet.html')) {
-        renderPets();
-    }
-    if (path.includes('appointment.html')) {
+    // Auto-detect page content and render
+    if (document.getElementById('shop-grid')) renderShop('all');
+    if (document.getElementById('pet-grid')) renderPets();
+    if (document.getElementById('calendar-days')) {
         renderCalendar();
         populatePetSelect();
     }
@@ -419,6 +412,7 @@ function selectDate(y, m, d) {
 }
 function renderTimeSlots() {
     const container = document.getElementById('time-slots');
+    if(!container) return;
     container.innerHTML = timeSlots.map(t => {
         const isSelected = selectedTime === t;
         return `<button onclick="selectTime('${t}')" class="py-2 px-3 rounded-lg text-xs font-medium transition-all ${isSelected ? 'bg-navy-500 text-ivory-100' : 'bg-ivory-200 text-navy-500 hover:bg-gold-400 hover:text-ivory-100'}">${t}</button>`;
@@ -438,6 +432,8 @@ function populatePetSelect() {
 function updateAptSummary() {
     const summary = document.getElementById('apt-summary');
     const content = document.getElementById('apt-summary-content');
+    if(!summary || !content) return;
+
     const service = document.getElementById('apt-service').value;
     const pet = document.getElementById('apt-pet').value;
     const date = document.getElementById('apt-date').value;
@@ -517,7 +513,7 @@ function initGSAPAnimations() {
         );
     });
     
-    gsap.utils.toArray('.service-card, .review-card, .doctor-card, .shop-card, .pet-card').forEach((card, i) => {
+    gsap.utils.toArray('.service-card, .review-card, .doctor-card, .shop-card, .pet-card, .step-item').forEach((card, i) => {
         gsap.fromTo(card,
             { opacity: 0, y: 20 },
             {
